@@ -24,7 +24,9 @@ data of each lattice and finding the minimum on using the "Reading energies
 script for 500 timesteps" and "Reading energies script for 1000 timesteps". 
 However, it can be adapted for the user needs. 
 
-Distribution of atoms in the precreated lattice is random in this case, for the random composition. Vanadium composition is specified as parameter at the beginning of the code. 
+Distribution of atoms in the precreated lattice is random in this case, for the 
+random composition. Vanadium composition is specified as parameter at the 
+beginning of the code.
 
 """
 
@@ -32,6 +34,16 @@ import numpy as np
 import os
 import shutil
 import pandas as pd
+
+
+#%% Location of potential and input files - name input by user
+#   Input file must follow the template found in the GitHub repository, and 
+#   it needs to be modified depending on the temperature, simulation duration, 
+#   and dumping of output values.
+
+file_directory = "C:/Users/cdiazcarav/OneDrive - University of Texas at El Paso/Documents/AA - UTEP/Munoz team/PRM Paper/MD Simulations at 1300K/"
+
+#%% Lattice parameters list definition and iteration
 
 lattice_parameters = []
 vanadium_composition = 0.5
@@ -109,17 +121,16 @@ for lattice_parameter in lattice_parameters:
     
     # Copies potentials and input files to each of the directories
     potential_library_dest = os.path.join(new_directory, "FeV.library.meam")
-    shutil.copy("C:/Users/cdiazcarav/OneDrive - University of Texas at El Paso/Documents/AA - UTEP/Munoz team/JOM Paper/MD Simulations at 1000K/FeV.library.meam", potential_library_dest)
+    shutil.copy(file_directory+"FeV.library.meam", potential_library_dest)
     
     potential_FeV_dest = os.path.join(new_directory, "FeV.meam")
-    shutil.copy("C:/Users/cdiazcarav/OneDrive - University of Texas at El Paso/Documents/AA - UTEP/Munoz team/JOM Paper/MD Simulations at 1000K/FeV.meam", potential_FeV_dest)
+    shutil.copy(file_directory+"FeV.meam", potential_FeV_dest)
     
     input_file_dest = os.path.join(new_directory, "FeV_external_positions_input_file.in")
-    shutil.copy("C:/Users/cdiazcarav/OneDrive - University of Texas at El Paso/Documents/AA - UTEP/Munoz team/JOM Paper/MD Simulations at 1000K/FeV_external_positions_input_file.in", 
-                input_file_dest)
+    shutil.copy(file_directory+"FeV_external_positions_input_file.in", input_file_dest)
     
     # Sequence of lines to write positions' data in LAMMPS format
-    with open('atoms positions.data', 'w') as fdata:
+    with open('atoms_positions.data', 'w') as fdata:
             #First line included as comment
             fdata.write('Crystalline FeV atoms - written by EnCodeVentor tutorial\n\n')
             
@@ -153,3 +164,4 @@ for lattice_parameter in lattice_parameters:
     os.popen("lammps-shell.exe -in FeV_external_positions_input_file.in")
     
     os.chdir(parent_dir)
+    
