@@ -32,6 +32,16 @@ import os
 import shutil
 import pandas as pd
 
+
+#%% Location of potential and input files - name input by user
+#   Input file must follow the template found in the GitHub repository, and 
+#   it needs to be modified depending on the temperature, simulation duration, 
+#   and dumping of output values.
+
+file_directory = "C:/Users/cdiazcarav/OneDrive - University of Texas at El Paso/Documents/AA - UTEP/Munoz team/PRM Paper/MD Simulations at 1300K/"
+
+#%% Lattice parameters list definition and iteration
+
 lattice_parameters = []
 vanadium_composition = 0.25
 lattice_value_for = 2.8
@@ -42,6 +52,9 @@ for i in range(39):
     lattice_parameters.append(lattice_value_for)
     lattice_value_for += 0.01
 
+#%% Defines positions of vanadium atoms in the supercell for ordered 
+#   configuration
+
 range_unit_cell = np.arange(1, 17)
 
 if vanadium_composition == 0.25:
@@ -51,6 +64,9 @@ elif vanadium_composition == 0.75:
 
 df_random_numbers = pd.DataFrame(random_int_array)
 df_random_numbers.to_csv('Random array for atomic configuration.csv')
+
+#%% Calculates the directory for each lattice parameter, creates the atoms' 
+#   positions, and runs the simulations 
 
 for lattice_parameter in lattice_parameters:
 
@@ -106,17 +122,16 @@ for lattice_parameter in lattice_parameters:
     # Copies potentials and input files to each of the directories
     
     potential_library_dest = os.path.join(new_directory, "FeV.library.meam")
-    shutil.copy("C:/Users/cdiazcarav/OneDrive - University of Texas at El Paso/Documents/AA - UTEP/Munoz team/JOM Paper/MD Simulations at 1000K/FeV.library.meam", potential_library_dest)
+    shutil.copy(file_directory+"FeV.library.meam", potential_library_dest)
     
     potential_FeV_dest = os.path.join(new_directory, "FeV.meam")
-    shutil.copy("C:/Users/cdiazcarav/OneDrive - University of Texas at El Paso/Documents/AA - UTEP/Munoz team/JOM Paper/MD Simulations at 1000K/FeV.meam", potential_FeV_dest)
+    shutil.copy(file_directory+"FeV.meam", potential_FeV_dest)
     
     input_file_dest = os.path.join(new_directory, "FeV_external_positions_input_file.in")
-    shutil.copy("C:/Users/cdiazcarav/OneDrive - University of Texas at El Paso/Documents/AA - UTEP/Munoz team/JOM Paper/MD Simulations at 1000K/FeV_external_positions_input_file.in", 
-                input_file_dest)
+    shutil.copy(file_directory+"FeV_external_positions_input_file.in", input_file_dest)
     
     
-    with open('atoms positions.data', 'w') as fdata:
+    with open('atoms_positions.data', 'w') as fdata:
             #First line included as comment
             fdata.write('Crystalline Al atoms - written by EnCodeVentor tutorial\n\n')
             
@@ -152,5 +167,4 @@ for lattice_parameter in lattice_parameters:
     os.popen("lammps-shell.exe -in FeV_external_positions_input_file.in")
     
     os.chdir(parent_dir)
-    
     
