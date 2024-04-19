@@ -37,7 +37,6 @@ file_directory = "C:/Users/cdiazcarav/OneDrive - University of Texas at El Paso/
 #%% Lattice parameters list definition and iteration
 
 lattice_parameters = []
-vanadium_composition = 0.5
 lattice_value_for = 2.81
 
 for i in range(39):
