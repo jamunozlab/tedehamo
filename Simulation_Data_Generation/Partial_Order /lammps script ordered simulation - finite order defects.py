@@ -93,9 +93,9 @@ print(composition)
 for lattice_parameter in lattice_parameters:
     
     # Defining unit cell
-    basis = np.array([[0.5, 0.0, 0.0], 
-                      [0.0, 0.5, 0.0],
-                      [0.0, 0.0, 0.5]])*lattice_parameter
+    basis = np.array([[1, 0.0, 0.0], 
+                      [0.0, 1, 0.0],
+                      [0.0, 0.0, 1]])*lattice_parameter
     
     base_atoms = np.array([[0.0, 0.0, 0.0], 
                            [0.5, 0.5, 0.5]])*lattice_parameter
