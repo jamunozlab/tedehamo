@@ -11,8 +11,8 @@ The following program is used to generate multiple LAMMPS simulations
 automatically, increasing the lattice parameter each time by a desired amount.
 It uses the os library to send the input files into the terminal, creates a new 
 directory for each lattice parameter, and copies the potential and input files 
-to each of these new directories. As intial parameters for the simulation, you 
-have the vanadium composition, and intial lattice parameter value.
+to each of these new directories. As initial parameters for the simulation, you 
+have the vanadium composition, and initial lattice parameter value.
 
 Compared to previous order and disordered compositions generators, this program
 introduces a finite amount of defects in a disordered B2 lattice, specified by
