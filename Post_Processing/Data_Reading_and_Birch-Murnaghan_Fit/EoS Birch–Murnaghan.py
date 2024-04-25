@@ -38,6 +38,7 @@ import matplotlib.pyplot as plt
 
 import seaborn as sns
 
+
 #%% Birch-Murnaghan Equation of State Functions 
 
 def E_BM(V, E0, V0, B0, B0p):
@@ -50,6 +51,7 @@ def E_M(V, E0, V0, B0, B0p):
 
 #%% Simulation
 
+total_atoms = 2000
 composition = 0.5
 fe_composition = 1 - composition
 
@@ -69,7 +71,7 @@ V = X ** 3
 # Stacking energies
 E = np.vstack([simulation_1[:, 2].reshape(len(simulation_1[:, 2]), 1), 
                simulation_2[:, 2].reshape(len(simulation_2[:, 2]), 1)])
-E = E / 2000
+E = E / total_atoms
 
 print(X)
 print(np.shape(X))
