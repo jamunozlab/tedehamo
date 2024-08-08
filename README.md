@@ -1,4 +1,6 @@
-# tedehamo
+# Temperature-Dependent Harmonic Model (TDHM)
+
+Welcome to TDHM, a simulation framework for computing the thermodynamic quantities and lattice dynamics of a system from molecular dynamics simulations. 
 
 Tutorial #1 - Data Generation: https://www.youtube.com/channel/UCGrdCKajVVovcQkxH6rxs4A
 
