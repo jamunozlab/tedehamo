@@ -15,4 +15,4 @@ Tutorial #3 - Post-Processing 2, Debye temperature, vibrational entropy, and fre
 The directory Data contains the values reported for the thermodynamic quantities in Figs. 2 and 3 of Ref. 1, for ordered (B2) and disordered (A2) simulations.  
 
 References:
-[1] Diaz-Caraveo, C., KC, B., and Muñoz San Martín, J. "Lattice dynamics and free energies of Fe-V alloys with thermal and chemical disorder." Journal of Physics: Condensed Matter (2024).
+[1] Diaz-Caraveo, C., KC, B., and Muñoz San Martín, J. A. "Lattice dynamics and free energies of Fe-V alloys with thermal and chemical disorder." Journal of Physics: Condensed Matter (2024).
